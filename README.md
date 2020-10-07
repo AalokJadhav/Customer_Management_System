@@ -3,8 +3,8 @@
 
 ****
 
-A client panel/ client management system - a single page application with full CRUD functionality, developed using Angular 7 for front-end and PHP for backend.
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+A single page application with full CRUD functionality, developed using Angular 7 for front-end and PHP for backend.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.1.
 
 **Please support this project by simply putting a Github star ⭐. 🙏 Thanks**
 
@@ -135,7 +135,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * RecaptchaModule
 * AgmCoreModule
 * NgxPaginationModule
-* 
+
 #### Service
 
 * ToasterService
