@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- <script>
+        var i;
+        var j;
+        var k = 0;
+        var m = 1;
+
+        for(i=0;i<=5;i++){
+            for(j=4;j>i;j--){
+                document.write(' ');
+            }
+                for(k=0;k=m-1;k++){
+                    document.write('*');
+                }
+                m=m+2;
+                document.write('<br>');
+            
+        }
+        
+        </script> -->
+
+        <script>
+        n=3;
+        m=1;
+        for( let i=1; i<=n; i++){
+
+
+            for(let j=1; j<=n-i; j++){
+
+                document.write(' &nbsp;');
+            }
+            for(let k=0;k<=m-1; k++){
+                document.write('#');
+            }
+            m=m+2;
+            document.write('<br>');
+
+           
+        }
+
+        m=m-2;
+          for( let i=1; i<=n; i++){
+          
+
+            for(let j=1; j<=i; j++){
+
+                document.write(' &nbsp;');
+            }
+            for(let k=1;k<=m-2; k++){
+                document.write('#');
+            }
+          
+            document.write('<br>');
+            m=m-2;
+
+            }
+        </script>
+</body>
+</html>

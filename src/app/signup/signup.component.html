@@ -1,0 +1,263 @@
+<div class="row">
+  <div class="col-md-5 left">
+    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+    <h3 style="color: white">Welcome...</h3>
+    <p style="color:rgb(150, 163, 27)"><b>
+        You are 30 seconds away from your Dashboard..!</b></p><br>
+    <input type="button" class="btn btn-danger" name="" value="Login" routerLink="/login" /><br />
+
+  </div>
+  <div class="col-md-7">
+
+    <div class="bg">
+      <div class="container register">
+        <div class="jumbotron">
+          <h4 class="text-center"><b>Sign Up</b></h4>
+          <form [formGroup]="RegisterForm">
+            <div class="form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user" style=" color:rgb(230, 34, 203)"></i></span>&nbsp;
+                <input type="text" class="form-control" name="firstname" placeholder="FirstName"
+                  formControlName="firstname" pattern="[a-zA-Z][a-zA-Z ]+" autocomplete="off"
+                  [ngClass]="{ 'is-invalid': RegisterForm.controls.firstname.touched && RegisterForm.controls.firstname.errors}">
+              </div>
+              <div style="text-align:center"
+                *ngIf="(RegisterForm.controls.firstname.touched && submit) && RegisterForm.controls.firstname.errors">
+                <a class="parsley-required"
+                  *ngIf="RegisterForm.controls.firstname.errors.required || RegisterForm.controls.firstname.touched"
+                  style=" color:red"><b>*firstname is required</b>
+                </a>
+              </div>
+              <div [hidden]="!RegisterForm.controls.firstname.hasError('pattern')" style="text-align:center; color:red">
+                <b>*only alphabets allowed</b></div>
+
+
+            </div>
+
+            <div class="form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user" style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+                <input type="text" class="form-control" name="lastname" placeholder="lastname"
+                  pattern="[a-zA-Z][a-zA-Z ]+" formControlName="lastname" autocomplete="off"
+                  [ngClass]="{ 'is-invalid': RegisterForm.controls.lastname.touched && RegisterForm.controls.lastname.errors }">
+              </div>
+              <div style="text-align:center"
+                *ngIf="(RegisterForm.controls.lastname.touched && submit) && RegisterForm.controls.lastname.errors">
+                <a class="parsley-required"
+                  *ngIf="RegisterForm.controls.lastname.errors.required || RegisterForm.controls.lastname.touched"
+                  style=" color:red"><b>*lastname is required</b>
+                </a>
+              </div>
+              <div [hidden]="!RegisterForm.controls.lastname.hasError('pattern')" style="text-align:center; color:red">
+                <b>*only alphabets allowed</b></div>
+
+            </div>
+            <div class="form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-at" style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+                <input type="text" class="form-control" name="email" placeholder="example@gmail.com"
+                  formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" autocomplete="off"
+                  [ngClass]="{ 'is-invalid': RegisterForm.controls.email.touched && RegisterForm.controls.email.errors }">
+              </div>
+              <div style="text-align:center"
+                *ngIf="(RegisterForm.controls.email.touched && submit) && RegisterForm.controls.email.errors">
+                <a class="parsley-required"
+                  *ngIf="RegisterForm.controls.email.errors.required || RegisterForm.controls.email.touched"
+                  style=" color:red"><b>*email is required</b>
+                </a>
+              </div>
+              <div [hidden]="!RegisterForm.controls.email.hasError('pattern')" style=" text-align:center;color:red">
+                <b>*email
+                  format should be proper</b>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key" style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+                <input type="password" class="form-control" name="password" placeholder="Password"
+                  formControlName="password" [type]="passwordType || 'password'"
+                  [ngClass]="{ 'is-invalid': RegisterForm.controls.password.touched && RegisterForm.controls.password.errors }">
+                <button (click)="togglePasswordType()" [name]="(passwordType === 'text') ? 'eye-off' : 'eye'">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div style="text-align:center"
+                *ngIf="(RegisterForm.controls.password.touched && submit) && RegisterForm.controls.password.errors">
+                <a class="parsley-required"
+                  *ngIf="RegisterForm.controls.password.errors.required || RegisterForm.controls.password.touched"
+                  style=" color:red"><b>*password is required</b>
+                </a>
+              </div>
+              <div [hidden]="!RegisterForm.controls.password.hasError('maxlength')"
+                style=" text-align:center; color:red"><b>*maximum password 6 digit</b>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-home" style="color:rgb(230, 34, 203)"></i>
+                </span>&nbsp;
+                <textarea type="address" class="form-control" name="address" placeholder="Enter your address..."
+                  rows="2" cols="80" formControlName="address"
+                  [ngClass]="{ 'is-invalid': RegisterForm.controls.address.touched && RegisterForm.controls.address.errors }"></textarea>
+              </div>
+              <div style="text-align:center"
+                *ngIf="RegisterForm.controls.address.touched && RegisterForm.controls.address.errors">
+                <a class="parsley-required"
+                  *ngIf="RegisterForm.controls.address.errors.required || RegisterForm.controls.address.touched"
+                  style=" color:red">
+                </a>
+              </div>
+            </div>
+            <br>
+            <button class="btn btn-block btn-success" (click)="signup()">Sign up</button>
+            <br>
+            <div>
+              <div *ngIf="msg" class="text-center"><b>{{msg}}</b></div>
+              <div *ngIf="error" class="text-center"><b>{{error}}</b></div>
+
+              <!-- <div *ngIf="error_msg1" class="text-center"><b>{{error_msg1}}</b></div> -->
+
+              <h6 class="text-center" style="color:rgb(180, 29, 218)"><b>Already have an account..!</b>&nbsp;&nbsp;
+                <a routerLink="/login">&nbsp;Login</a>
+              </h6>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <app-footer></app-footer>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+        </div>
+        <div class="col-md-9 register-right">
+            
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">SignUp<br><br>
+                      <h5>It's free and always will be...</h5>
+                    </h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <div class="maxl">
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gender" value="male" checked>
+                                        <span> Male </span> 
+                                    </label>&nbsp;  
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gender" value="female">
+                                        <span>Female </span> 
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                    <option>What is your Birthdate?</option>
+                                    <option>What is Your old Phone Number</option>
+                                    <option>What is your Pet Name?</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+                            </div>
+                            <input type="submit" class="btnRegister"  value="Register"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3  class="register-heading">Apply as a Hirer</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                    <option>What is your Birthdate?</option>
+                                    <option>What is Your old Phone Number</option>
+                                    <option>What is your Pet Name?</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                            </div>
+                            <input type="submit" class="btnRegister"  value="Register"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> -->

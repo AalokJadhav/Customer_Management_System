@@ -1,0 +1,26 @@
+<!-- <form [formGroup]="aFormGroup">
+  <ngx-recaptcha2 #captchaElem
+    siteKey="6Lc9vLEUAAAAAEcrSJMTuab8bj1MZwW_N4a5dCaQ"
+    (reset)="handleReset()"
+    (expire)="handleExpire()"
+    (error)="handleError()"
+    (load)="handleLoad()"
+    (success)="handleSuccess($event)"
+    [useGlobalDomain]="false"
+    [size]="size"
+    [hl]="lang"
+    [theme]="theme"
+    [type]="type"
+    formControlName="recaptcha">
+  </ngx-recaptcha2>
+</form> -->
+
+
+<!-- <re-captcha (resolved)="resolved($event)" siteKey="6Lc9vLEUAAAAAEcrSJMTuab8bj1MZwW_N4a5dCaQ"></re-captcha>' -->
+<div>
+<recaptcha
+[(ngModel)]="myRecaptcha"
+          (scriptLoad)="onScriptLoad()"
+          (scriptError)="onScriptError()"
+        ></recaptcha>
+      </div>

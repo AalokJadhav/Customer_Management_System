@@ -1,0 +1,15 @@
+
+#customer th {
+  text-align: center;
+  position: sticky;
+  background-color: rgb(162, 157, 207);
+  color: black;
+}
+
+  tr:hover {
+    background-color:rgb(243, 238, 223);
+  }
+
+  .alert {
+    width:70%;    
+ }

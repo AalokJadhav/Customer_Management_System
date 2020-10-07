@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+
+<div class="row">
+  <div class="col-md-2">
+    <app-side></app-side>
+  </div>
+
+  <div class="col-md-10">
+    <br><br>
+    <div class="container">
+      <div class="jumbotron">
+        <h4 class="text-center"><b>Update Lead</b></h4>
+        <form [formGroup]="UpdateLead">
+
+          <div class="form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-id-card-alt"
+                  style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+              <select type="dropdown" class="form-control" name="customer_name" formControlName="customer_name" placeholder="Customer Name" 
+>
+                <option hidden >Select Customer Name</option>
+                <option *ngFor="let c of customer"  value ={{c.customer_id}}>{{c.customer_name}}</option>
+                </select>      
+            </div>
+            <div *ngIf="(UpdateLead.controls.customer_name.touched) && UpdateLead.controls.customer_name.errors">
+              <a *ngIf="UpdateLead.controls.customer_name.errors.required || UpdateLead.controls.customer_name.touched"
+                style=" color:red"><b>*customername is required</b>
+              </a>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-building"
+                  style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+              <input type="text" class="form-control" name="title" placeholder="Title" formControlName="title"
+                [ngClass]="{ 'is-invalid': UpdateLead.controls.title.touched && UpdateLead.controls.title.errors }">
+            </div>
+            <div *ngIf="(UpdateLead.controls.title.touched  ) && UpdateLead.controls.title.errors">
+              <a *ngIf="UpdateLead.controls.title.errors.required || UpdateLead.controls.title.touched"
+                style=" color:red"><b>*title is required</b>
+              </a>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-file-alt"
+                  style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+              <input type="text" class="form-control" name="description" placeholder="Description"
+                formControlName="description"
+                [ngClass]="{ 'is-invalid': UpdateLead.controls.description.touched && UpdateLead.controls.description.errors }">
+            </div>
+            <div *ngIf="(UpdateLead.controls.description.touched) && UpdateLead.controls.description.errors">
+              <a *ngIf="UpdateLead.controls.description.errors.required || UpdateLead.controls.description.touched"
+                style=" color:red"><b>*description is required</b>
+              </a>
+            </div>
+          </div>
+
+            <div class="form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-rupee-sign" style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+                  <input type="text" class="form-control" name="amount" placeholder="Amount"
+                    formControlName="amount"
+                    [ngClass]="{ 'is-invalid': UpdateLead.controls.amount.touched && UpdateLead.controls.amount.errors }">
+                </div>
+                <div *ngIf="(UpdateLead.controls.amount.touched) && UpdateLead.controls.amount.errors">
+                  <a *ngIf="UpdateLead.controls.amount.errors.required || UpdateLead.controls.amount.touched"
+                    style=" color:red"><b>*amount is required</b>
+                  </a>
+                </div>
+              </div>
+
+          <br>
+          <button type="submit" class="btn btn-block btn-success" (click)="updateLead()">Update</button><br>
+          <p *ngIf="successMsg" style="color:green"><b>" {{successmsg}} "</b></p>
+          <div *ngIf="msg" class="text-center"><b>{{msg}}</b></div>
+          <div *ngIf="error_msg1" class="text-center"><b>{{error_msg1}}</b></div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

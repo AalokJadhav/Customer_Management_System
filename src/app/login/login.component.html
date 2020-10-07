@@ -1,0 +1,73 @@
+
+<div class="row">
+  <div class="col-md-3 left">
+
+    <div class="pull-left image">
+      <!-- <span class="input-group-text"></span><i class="fas fa-user"></i></span>&nbsp; -->
+      <img src="assets/images/user-1.jpg" class="img-circle" alt="User Image"
+        style="width:150px">&nbsp;&nbsp;&nbsp;&nbsp;
+      <h2 style="color: gold">User Login</h2>
+    </div>
+
+  </div>
+  <div class="col-md-9">
+
+    <div class="container" style="text-align: center">
+      <div class="jumbotron">
+
+        <h4 class="text-center"><b>Login</b></h4>
+        <form [formGroup]="LoginForm">
+          <div class="form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-at" style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+              <input type="text" class="form-control" placeholder="Email" name="email" formControlName="email" autocomplete="off"
+                [ngClass]="{ 'is-invalid': LoginForm.controls.email.touched && LoginForm.controls.email.errors }">
+            </div>
+            <div *ngIf="(LoginForm.controls.email.touched && submit) && LoginForm.controls.email.errors">
+              <a class="parsley-required"
+                *ngIf="LoginForm.controls.email.errors.required || LoginForm.controls.email.touched"
+                style=" color:red"><b>*email is required</b>
+              </a>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key" style="color:rgb(230, 34, 203)"></i></span>&nbsp;
+              <input type="password" class="form-control" placeholder="Password" name="password" 
+                formControlName="password" [type]="passwordType || 'password'"
+                [ngClass]="{ 'is-invalid': LoginForm.controls.password.touched && LoginForm.controls.password.errors }">
+                <button (click)="togglePasswordType()" [name]="(passwordType === 'text') ? 'eye-off' : 'eye'">
+                    <i class="fas fa-eye"></i>
+                    </button>
+            </div>
+            <div *ngIf="(LoginForm.controls.password.touched && submit) && LoginForm.controls.password.errors">
+              <a class="parsley-required"
+                *ngIf="LoginForm.controls.password.errors.required || LoginForm.controls.password.touched"
+                style=" color:red"><b>*password is required</b>
+              </a>
+              <a class="parsley-required" *ngIf="LoginForm.controls.errors?.minLength" style=" color:red"><b>*minumum 6
+                  digit required</b>
+              </a>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-block btn-success" (click)="login()">Login</button>
+          <p *ngIf="error_msg" style="color:red"><b>{{error_msg}}</b></p>
+          <p *ngIf="loginmsg" style="color:green"><b>{{loginmsg}}</b></p>
+
+
+          <br>
+          <h6 class="text-center" style="color:rgb(180, 29, 218)"><b>Don't have an account yet..?</b>
+            <a routerLink="/signup">&nbsp; Signup</a>
+          </h6>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+
+</div>

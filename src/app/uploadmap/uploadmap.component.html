@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col s8 offset-2">
+      <div>
+        <h1 style="color:crimson; text-align: center"><b>Google Maps Places Autocomplete</b></h1>
+      </div>
+      <br><br><br>
+
+        <div class="row">
+
+          <!-- <div class="input-field col s12">
+                        <label for="caption" style="color:rgb(53, 67, 221)"><b>Search</b></label>&nbsp;&nbsp;&nbsp;
+                      <input type="text" #caption name="search" id="caption" required formControlName="search">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  </div>  -->
+
+          <div class="container">
+            <div class="form-group">
+              <input placeholder="Enter City" autocorrect="off" autocapitalize="off" spellcheck="off"
+                type="text" class="form-control" #search [formControl]="searchControl"><br>
+                <button class="btn btn-info" (click)="getAddress(latitude, longitude)">Search</button>
+            </div>
+            <br>
+            <!-- <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+                      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                    </agm-map> -->
+
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+              <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+            </agm-map>
+
+            <br><br>
+            <h4 style="color:rgb(21, 101, 142)"><b>Latitude: {{latitude}}</b></h4>
+            <h4 style="color:rgb(21, 101, 142)"><b>Longitude: {{longitude}}</b></h4>
+          </div>
+
+          
+
+          <!-- <div class="field-top">
+            <input type="text" id="txtHome" color="primary"
+            [(ngModel)]="querytext"
+            (ionInput)="updateSchedule()"
+             class="form-control" #search formControlName="address" placeholder="Address" 
+                [ngClass]="{ 'is-invalid': f.address.touched && f.address.errors }">
+            <ul class="parsley-errors-list filled" *ngIf="f.address.touched && f.address.errors">
+                <li class="parsley-required " *ngIf="f.address.errors.required || f.address.touched">Address is required.
+                </li>
+        
+            </ul>
+      
+        </div> -->
+        </div>
+
+
+    
+
+
+    </div>
+
+  </div>
+
+</div>

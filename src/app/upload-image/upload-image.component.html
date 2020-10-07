@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+      <div class="col s8 offset-2">
+          <div >
+              <h2 style="color:crimson"><b>Upload Image</b></h2>
+          </div>
+          <br><br><br>
+          <form #imageForm = ngForm [formGroup]="Uploadimage">
+
+              <div class="row">
+
+                  <div class="input-field col s12">
+                        <label for="caption" style="color:rgb(53, 67, 221)"><b>Caption</b></label>&nbsp;&nbsp;&nbsp;
+                      <input type="text" #caption name="caption" id="caption" required formControlName="caption">
+                  </div> 
+                  <br><br><br>
+              </div>
+
+              <img [src]="imageUrl" style="width:250px;height:200" >&nbsp;
+              <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)"  >
+              <button type="submit" class="btn btn-info"  (click)="upload()" [disabled] = "Image.value==''"><b>Upload</b></button> 
+              <br><br>
+              <div *ngIf="successmsg" style="color:green"><b>" {{successmsg}} "</b></div>
+              <div *ngIf="msg" class="text-center"><b>{{msg}}</b></div>
+              <div *ngIf="error_msg1" class="text-center" style="color:red"><b>"{{error_msg1}}"</b></div>
+          </form>
+
+
+      </div>
+
+  </div>
+
+</div>

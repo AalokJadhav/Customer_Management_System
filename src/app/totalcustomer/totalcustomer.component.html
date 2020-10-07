@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+  <div class="row">
+    <div class="col-md-2">
+     <app-side></app-side>
+    </div>
+    <div class="col-md-10">
+      
+       
+      <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead>
+            <tr align="center" style="color: rgb(78, 78, 204)">
+              <th>Total Customers</th>
+             
+            </tr>
+            <tr>
+              <b><td>
+                  Total Count Of Customer is = {{data2.length}}
+              </td>
+            </b>
+            </tr>
+     
+          </thead>
+        </table>
+      </div>
+      <router-outlet></router-outlet>
+    
+    </div>
+  </div>

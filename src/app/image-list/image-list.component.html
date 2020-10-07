@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0" 
+  style="color: rgb(236, 65, 122); font-family:Georgia, 'Times New Roman', Times, serif">
+  <b>Thumbnail Gallery</b>
+</h1>
+
+  <hr class="mt-2 mb-5">
+
+  <div class="row">
+    <tr class="img-fluid img-thumbnail" *ngFor="let img of data3">
+   <td><img src="{{imgurl}}{{img}}"></td>
+   <br>
+   <p style="text-align: center; color: rgb(26, 86, 206)"><b>{{data2[0].caption}}</b></p>
+
+  </div>

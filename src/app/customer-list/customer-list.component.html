@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+
+<div class="row">
+  <div class="col-sm-2">
+  <app-side></app-side>
+  </div>
+  <div class="col-sm-10">
+
+    <h2 style="color: rgb(240, 17, 199);text-align:center"><b>Customer List</b></h2>
+    <br>
+    <table id="customer"  class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Customer ID</th>
+          <th>Customer Name</th>
+          <th>Company Name</th>
+          <th>Email ID</th>
+          <th>Email ID 1</th>
+          <th>Contact No</th>
+          <th>Contact No 1</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data2 | paginate: {itemsPerPage:10, currentPage: p}; let i=index">
+          <td>{{item.customer_id}}</td>
+          <td>{{item.customer_name}}</td>
+          <td>{{item.company_name}}</td>
+          <td>{{item.email_id}}</td>
+          <td>{{item.email_id1}}</td>
+          <td>{{item.contact_no}}</td>
+          <td>{{item.contact_no1}}</td>
+          <td>
+
+            <button class="btn btn-info" (click)="View(item.customer_id)">
+              <i class="fas fa-edit"></i>
+            </button>&nbsp;&nbsp;
+            <button class="btn btn-danger" (click)="deleteDet(item.customer_id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br><br>
+    <pagination-controls (pageChange)="p = $event" style="text-align:center"></pagination-controls>
+
+
+  </div>
+
+</div>
